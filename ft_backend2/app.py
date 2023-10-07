@@ -119,3 +119,19 @@ class ProductDeletionResource(Resource):
         db.session.commit()
         return {'message': 'Product deleted successfully'}, 204
 api.add_resource(ProductDeletionResource, '/product/<int:product_id>')
+
+class UserDeletionResource(Resource):
+    def delete(self, user_id):
+        user = User.query.get(user_id)
+        if not user:
+            return {'message': 'User not found'}, 404
+
+        db.session.delete(user)
+        db.session.commit()
+        return {'message': 'User deleted successfully'}, 204
+
+api.add_resource(UserDeletionResource, '/user/<int:user_id>')
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
