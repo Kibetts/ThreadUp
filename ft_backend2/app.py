@@ -108,3 +108,14 @@ class ProductResource(Resource):
 
 
 api.add_resource(ProductResource, '/product')
+
+class ProductDeletionResource(Resource):
+    def delete(self, product_id):
+        product = Product.query.get(product_id)
+        if not product:
+            return {'message': 'Product not found'}, 404
+
+        db.session.delete(product)
+        db.session.commit()
+        return {'message': 'Product deleted successfully'}, 204
+api.add_resource(ProductDeletionResource, '/product/<int:product_id>')
