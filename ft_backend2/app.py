@@ -5,15 +5,19 @@ from flask_jwt_extended import create_access_token, JWTManager
 from flask_restful import Api, Resource, reqparse
 from datetime import datetime 
 import bcrypt
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///Threadup.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['SECRET_KEY'] = 'your-secret-key' 
 
 db = SQLAlchemy(app)
 migrate = Migrate(app, db)
 
+jwt = JWTManager(app)
 api = Api(app)
 
 from models import User, Product 
