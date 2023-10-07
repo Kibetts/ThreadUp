@@ -84,3 +84,27 @@ class ProductResource(Resource):
         db.session.commit()
 
         return {'message': 'Product created successfully'}, 201
+    
+    def get(self):
+        products = Product.query.all()
+
+        product_list = []
+        for product in products:
+            product_data = {
+                'product_id': product.product_id,
+                'product_name': product.product_name,
+                'product_image': product.product_image,
+                'user_id': product.user_id,
+                'size': product.size,
+                'category': product.category,
+                'price': product.price,
+                'in_stock': product.in_stock,
+                'created_at': product.created_at.strftime('%Y-%m-%d %H:%M:%S') if product.created_at else None,
+                'updated_at': product.updated_at.strftime('%Y-%m-%d %H:%M:%S') if product.updated_at else None
+            }
+            product_list.append(product_data)
+
+        return {'products': product_list}
+
+
+api.add_resource(ProductResource, '/product')
