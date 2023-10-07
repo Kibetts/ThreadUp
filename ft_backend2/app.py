@@ -1,8 +1,9 @@
 from flask import Flask, request, jsonify
 from flask_sqlalchemy import SQLAlchemy
 from flask_migrate import Migrate
-
+from flask_jwt_extended import create_access_token, JWTManager
 from flask_restful import Api, Resource, reqparse
+from datetime import datetime 
 import bcrypt
 
 app = Flask(__name__)
@@ -55,3 +56,31 @@ class UserLoginResource(Resource):
 
 
 api.add_resource(UserLoginResource, '/login')
+
+class ProductResource(Resource):
+    def post(self):
+        data = request.get_json()
+
+        product_name = data.get('product_name')
+        product_image = data.get('product_image')
+        user_id = data.get('user_id')
+        size = data.get('size')
+        category = data.get('category')
+        price = data.get('price')
+
+        new_product = Product(
+            product_name=product_name,
+            product_image=product_image,
+            user_id=user_id,
+            size=size,
+            category=category,
+            price=price,
+            in_stock=True,  
+            created_at=datetime.now(), 
+            updated_at=datetime.now()  
+        )
+
+        db.session.add(new_product)
+        db.session.commit()
+
+        return {'message': 'Product created successfully'}, 201
