@@ -20,7 +20,7 @@ products_data = [
         "price": 50.99,
         "in_stock": True,
     },
-        {
+    {
         "product_name": "Vans",
         "product_image": "https://images.unsplash.com/photo-1512990414788-d97cb4a25db3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8dmFuc3xlbnwwfDB8MHx8fDA%3D&auto=format&fit=crop&w=500&q=60",
         "user_id": 3,  
@@ -29,7 +29,7 @@ products_data = [
         "price": 100.99,
         "in_stock": True,
     },
-        {
+    {
         "product_name": "Rugged trousers", 
         "product_image": "https://images.unsplash.com/photo-1582552938357-32b906df40cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGplYW5zfGVufDB8MXwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
         "user_id": 4,
@@ -111,7 +111,18 @@ products_data = [
         "size": "10.5",
         "price": 149.99,
         "in_stock": True
-    }
+    },
+    {
+        "product_name": "Rugged trousers", 
+        "product_image": "https://images.unsplash.com/photo-1582552938357-32b906df40cb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fGplYW5zfGVufDB8MXwwfHx8MA%3D%3D&auto=format&fit=crop&w=500&q=60",
+        "user_id": 4,
+        "category": "Clothing",
+        "size": "Medium", 
+        "price": 49.99,
+        "in_stock": True
+        
+        
+    },
     
 ]
 
