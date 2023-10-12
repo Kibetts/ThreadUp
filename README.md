@@ -1,6 +1,6 @@
 # ThreadUp
 
-### By Brian Kibet
+### By Brian Kibet & Isaac Mogaka
 
 This is the backend of an online thrift shop development project.
 
